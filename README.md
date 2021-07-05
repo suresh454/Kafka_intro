@@ -5,6 +5,6 @@
 ### Producer configuration
 ### Send Messages
 ### Serialization
-#### Default
-#### Custom
+- Default
+- Custom
 ### Partition
