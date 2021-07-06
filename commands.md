@@ -6,6 +6,7 @@
 
 ## Topic
 ### create a topic
+[mac](#mac)
 `bin/kafka-topics --zookeeper localhost:2181 --topic first_topic --create --partitions 3 --replication-factor 1`
 
 ### describe a topic
