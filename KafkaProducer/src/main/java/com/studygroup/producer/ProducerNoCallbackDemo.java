@@ -3,8 +3,10 @@ package com.studygroup.producer;
 import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.StringSerializer;
 
+import java.util.Arrays;
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 public class ProducerNoCallbackDemo {
 
@@ -14,9 +16,11 @@ public class ProducerNoCallbackDemo {
             KafkaProducer producer = getKafkaProducer();
             try {
                 for(int i=0; i<10; i++){
-                    RecordMetadata ack = (RecordMetadata) producer.send(new ProducerRecord(topic, "key"+i, "new Message all"+i)).get();
+                    Future<RecordMetadata> ackFuture =  producer.send(new ProducerRecord(topic, "key"+i, "new Message all"+i));
+                    RecordMetadata ack = ackFuture.get();
                     System.out.println(" Offset = " + ack.offset());
                     System.out.println(" Partition = " + ack.partition());
+                    System.out.println("Topic = " + ack.toString());
                 }
 
             } catch (InterruptedException e) {

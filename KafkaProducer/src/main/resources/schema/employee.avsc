@@ -1,0 +1,10 @@
+{
+  "namespace": "com.studygroup.producer.models",
+  "type": "record",
+  "name": "Employee",
+  "fields": [
+    {"name": "name","type": ["null","string"]},
+    {"name": "department","type": ["null","string"]},
+    {"name": "id","type": ["null","int"]}
+  ]
+}
