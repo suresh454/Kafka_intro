@@ -13,7 +13,6 @@ import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 
@@ -61,6 +60,8 @@ public class ProducerAvroSerializer {
         try {
             RecordMetadata resp = (RecordMetadata) producer.send(new ProducerRecord(topic, "1", byteArray)).get();
             System.out.println("Response = " + resp.toString());
+            producer.flush();
+            producer.close();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -75,8 +76,8 @@ public class ProducerAvroSerializer {
         Properties properties = new Properties();
         properties.put(ProducerConfig.CLIENT_ID_CONFIG,"HelloProducer");
         properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ByteArraySerializer.class.getName());
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName());
+        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ByteArraySerializer.class.getName());
         return new KafkaProducer(properties);
     }
 }
