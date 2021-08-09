@@ -12,7 +12,7 @@
 ### create a topic
 |Mac|
 |:---|
-|`bin/kafka-topics --zookeeper localhost:2181 --topic first_topic --create --partitions 3 --replication-factor 1`|
+|`bin/kafka-topics.sh --zookeeper localhost:2181 --topic first_topic --create --partitions 3 --replication-factor 1`|
 
 ### describe a topic
 |Mac|
@@ -27,7 +27,7 @@
 ### Console Producer
 |Mac|
 |:---|
-|`bin/kafka-console-producer --broker-list localhost:9092 --topic first_topic`|
+|`bin/kafka-console-producer.sh --broker-list localhost:9092 --topic first_topic`|
 
 
 ### Console Consumer

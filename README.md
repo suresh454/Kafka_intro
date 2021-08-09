@@ -23,3 +23,4 @@
 
 ## References
 1. https://github.com/PacktPublishing/Apache-Kafka-for-absolute-beginners
+2. https://howtodoinjava.com/kafka/multiple-consumers-example/
