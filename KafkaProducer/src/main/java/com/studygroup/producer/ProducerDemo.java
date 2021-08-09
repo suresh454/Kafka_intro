@@ -16,7 +16,7 @@ public class ProducerDemo {
 //        KafkaProducer producer = getKafkaProducer();
 //       producer.send(new ProducerRecord( topic, "4", "Demo"));
         KafkaProducer<Integer,String> kafkawriter= getKafkaProducer();
-        ProducerRecord<Integer,String> msg=new ProducerRecord<>(topic,1,"Demo - 1");
+        ProducerRecord<Integer,String> msg=new ProducerRecord<>(topic,5,"Demo - 1");
         kafkawriter.send(msg);
        System.out.print("Posted to producer");
         kafkawriter.close();

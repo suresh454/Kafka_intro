@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Properties;
 
-public class ConsumerDemo {
+public class ConsumerDemo1 {
 
     public static void main(String[] args) {
         String topic = "demo_topic";
@@ -25,7 +25,9 @@ public class ConsumerDemo {
                 ConsumerRecords<Integer, String> records = consumer.poll(Duration.ofMillis(1000));
                 Iterator iterator = records.iterator();
                 while (iterator.hasNext()){
-                    System.out.println("record = " + iterator.next().toString());
+                    ConsumerRecord<Integer,String> record = (ConsumerRecord<Integer, String>) iterator.next();
+
+                    System.out.println("record = " + record.toString());
                 }
                 //Alternative to iteration
                /* for (ConsumerRecord<Integer,String> record : records) {
@@ -42,7 +44,7 @@ public class ConsumerDemo {
         properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, IntegerDeserializer.class.getName());
-        properties.put(ConsumerConfig.GROUP_ID_CONFIG,"consumer-group");
+        properties.put(ConsumerConfig.GROUP_ID_CONFIG,"consumer-group1");
         properties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG,"earliest");
 
         return new KafkaConsumer(properties);
